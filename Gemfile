@@ -13,6 +13,8 @@ gem 'rack-cors'
 gem 'elasticsearch', git: 'git://github.com/elasticsearch/elasticsearch-ruby.git'
 gem 'webpacker', '~> 3.0', '>= 3.0.2'
 gem 'foreman'
+gem 'uglifier', '>= 1.3.0'
+gem 'jbuilder', '~> 2.5'
 
 group :development, :test do
   gem 'byebug', platforms: %i(mri mingw x64_mingw)
