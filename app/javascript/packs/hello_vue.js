@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     methods: {
       fetchData: function (event) {
         console.log(' Pressed fetch Hello');
-        axios.get(`http://localhost:3002/page_views`,
+        axios.get(`https://streemvue.herokuapp.com/`,
           {
             params: {
               urls: this.urls,
