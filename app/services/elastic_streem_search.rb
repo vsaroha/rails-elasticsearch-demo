@@ -4,12 +4,12 @@ class ElasticStreemSearch
 
   COLOR_ARRAY = ["#2b6f53", "#d82d6e", "#25A1F3", "#94a2bd", "#000000"]
 
-  def initialize(urls, after, before, interval="1d")
+  def initialize(urls, after, before, interval)
     @client = Elasticsearch::Client.new url: 'http://elastic:streem@test.es.streem.com.au:8080', log: true
-    @urls = urls 
-    @after = after
-    @before = before
-    @interval = interval
+    @urls = urls || ["http://www.smh.com.au/nsw/premier-gladys-berejiklian-announces-housing-affordability-reforms-20170601-gwi0jn.html"]
+    @after = after || "2017-06-01"
+    @before = before || "2017-06-02"
+    @interval = interval || "1h"
   end
 
   def client
@@ -41,7 +41,7 @@ class ElasticStreemSearch
           date_histogram: {
             field: "derived_tstamp",
             interval: @interval,
-            format: "yyyy-MM-dd HH:mm:ss"
+            format: "yyyy-MM-dd HH:mm"
           },
           aggs: {
             hits_per_url: {
