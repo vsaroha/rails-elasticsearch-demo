@@ -2,7 +2,7 @@ require 'elasticsearch'
 
 class ElasticStreemSearch
 
-  COLOR_ARRAY = ["#2b6f53", "#d82d6e", "#25A1F3", "#94a2bd", "#000000"]
+  COLOR_ARRAY = ["#2b6f53", "#d82d6e", "#FF5733", "#94a2bd", "#000000"]
 
   def initialize(urls, after, before, interval)
     @client = Elasticsearch::Client.new url: 'http://elastic:streem@test.es.streem.com.au:8080', log: true
@@ -69,13 +69,14 @@ class ElasticStreemSearch
     end
 
     data_sets = []
-    i = 1
+    i = 0
     sites_hit_count.each do |site, data|
       site_data_hash = {}
       site_data_hash["label"] = site
       site_data_hash["data"] = data
-      site_data_hash["backgroundColor"] = COLOR_ARRAY[COLOR_ARRAY.size % (i+=1)]
+      site_data_hash["backgroundColor"] = COLOR_ARRAY[i]
       data_sets << site_data_hash
+      i+=1
     end
 
     formatted_object = {}

@@ -5363,6 +5363,10 @@ vue-chartjs@^3.0.2:
   dependencies:
     lodash.merge "^4.6.0"
 
+vue-devtools@^3.1.9:
+  version "3.1.9"
+  resolved "https://registry.yarnpkg.com/vue-devtools/-/vue-devtools-3.1.9.tgz#283b458c6853f569a987da0092e7c52e8243a436"
+
 vue-hot-reload-api@^2.2.0:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.2.4.tgz#683bd1d026c0d3b3c937d5875679e9a87ec6cd8f"

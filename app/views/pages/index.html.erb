@@ -2,53 +2,59 @@
   <h1>Streem Page Hits Viewer</h1>
 
   <div id="chart">
-    Select urls<br>
-    <input type="checkbox" id="s1" value="http://www.smh.com.au/nsw/premier-gladys-berejiklian-announces-housing-affordability-reforms-20170601-gwi0jn.html" v-model="urls">
-    <label for="s1">smh.com.au/nsw/premier-gladys-berejiklian-announces-housing-affordability-reforms-20170601-gwi0jn.html</label><br>
-    <input type="checkbox" id="s2" value="http://www.smh.com.au/sport/tennis/an-open-letter-from-martina-navratilova-to-margaret-court-arena-20170601-gwhuyx.html" v-model="urls">
-    <label for="s2">smh.com.au/sport/tennis/an-open-letter-from-martina-navratilova-to-margaret-court-arena-20170601-gwhuyx.html</label><br>
-    <input type="checkbox" id="s3" value="http://www.news.com.au/technology/environment/trump-pulls-us-out-of-paris-climate-agreement/news-story/f5c30a07c595a10a81d67611d0515a0a" v-model="urls">
-    <label for="s3">news.com.au/technology/environment/trump-pulls-us-out-of-paris-climate-agreement/news-story</label><br>
-    <input type="checkbox" id="s3" value="http://www.news.com.au/travel/travel-updates/incidents/disruptive-passenger-grounds-flight-after-storming-cockpit/news-story/5949c1e9542df41fb89e6cdcdc16b615" v-model="urls">
-    <label for="s4">news.com.au/travel/travel-updates/incidents/disruptive-passenger-grounds-flight-after-storming-cockpit</label><br>
-    <br>
+    <div class="well">
+      <div class="row">
+        <div class="col-sm-9">
+          Select urls<br>
+          <input type="checkbox" id="s1" value="http://www.smh.com.au/nsw/premier-gladys-berejiklian-announces-housing-affordability-reforms-20170601-gwi0jn.html" v-model="urls">
+          <label for="s1">smh.com.au/nsw/premier-gladys-berejiklian-announces-housing-affordability-reforms-20170601-gwi0jn.html</label><br>
+          <input type="checkbox" id="s2" value="http://www.smh.com.au/sport/tennis/an-open-letter-from-martina-navratilova-to-margaret-court-arena-20170601-gwhuyx.html" v-model="urls">
+          <label for="s2">smh.com.au/sport/tennis/an-open-letter-from-martina-navratilova-to-margaret-court-arena-20170601-gwhuyx.html</label><br>
+          <input type="checkbox" id="s3" value="http://www.news.com.au/technology/environment/trump-pulls-us-out-of-paris-climate-agreement/news-story/f5c30a07c595a10a81d67611d0515a0a" v-model="urls">
+          <label for="s3">news.com.au/technology/environment/trump-pulls-us-out-of-paris-climate-agreement/news-story</label><br>
+          <input type="checkbox" id="s3" value="http://www.news.com.au/travel/travel-updates/incidents/disruptive-passenger-grounds-flight-after-storming-cockpit/news-story/5949c1e9542df41fb89e6cdcdc16b615" v-model="urls">
+          <label for="s4">news.com.au/travel/travel-updates/incidents/disruptive-passenger-grounds-flight-after-storming-cockpit</label><br>
+        </div>
 
-    After date: {{ after }} <br>
-    <input v-model="after" placeholder="YYYY-MM-DD">
+        <div class="col-sm-3">
+          Interval : {{ interval }}<br>
+          <select v-model="interval" class="form-control">
+            <option disabled value="">Please select one</option>
+            <option>1y</option>
+            <option>1M</option>
+            <option>1d</option>
+            <option>1h</option>
+          </select>
+        </div>
+      </div>
 
-    <br>
+      <br>
 
-    <p>
-      Before date: {{ before }}<br>
-      <input v-model="before" placeholder="YYYY-MM-DD">
-    </p>
+      <div class="row">
+        <div class="col-sm-6">
+          After date: {{ after }} <br>
+          <input v-model="after" placeholder="YYYY-MM-DD" class="form-control">
+        </div>
+        <div class="col-sm-6">
+          Before date: {{ before }}<br>
+          <input v-model="before" placeholder="YYYY-MM-DD" class="form-control">
+        </div>
 
-    <p>
-      Interval : {{ interval }}<br>
-      <select v-model="interval">
-        <option disabled value="">Please select one</option>
-        <option>1y</option>
-        <option>1M</option>
-        <option>1d</option>
-        <option>1h</option>
-      </select>
-    </p>
+      </div>
 
-    <button class= "btn btn-primary" v-on:click="fetchData">Plot Histogram</button>
+      <br>
+
+      <div class="text-center">
+        <button class= "btn btn-primary" v-on:click="fetchData">Redraw graph</button>
+      </div>
+    </div>
+
+    
 
     <line-chart 
-      v-bind:labelsarray="labelsarray"
-      v-bind:datasetsarray="datasetsarray">
+      v-bind:chart-data="chartData"
+      v-bind:options="options">
     </line-chart>
 
-
-    <div class="well">
-      {{ labelsarray }}
-    </div>
-
-    <div class="well">
-      {{ datasetsarray }}
-    </div>
-    
   </div>
 </div>
