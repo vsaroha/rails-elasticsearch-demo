@@ -16,7 +16,21 @@
           <label for="s4">news.com.au/travel/travel-updates/incidents/disruptive-passenger-grounds-flight-after-storming-cockpit</label><br>
         </div>
 
-        <div class="col-sm-3">
+        
+      </div>
+
+      <br>
+
+      <div class="row">
+        <div class="col-sm-4">
+          After date: {{ after }} <br>
+          <input v-model="after" placeholder="YYYY-MM-DD" class="form-control">
+        </div>
+        <div class="col-sm-4">
+          Before date: {{ before }}<br>
+          <input v-model="before" placeholder="YYYY-MM-DD" class="form-control">
+        </div>
+        <div class="col-sm-4">
           Interval : {{ interval }}<br>
           <select v-model="interval" class="form-control">
             <option disabled value="">Please select one</option>
@@ -25,19 +39,6 @@
             <option>1d</option>
             <option>1h</option>
           </select>
-        </div>
-      </div>
-
-      <br>
-
-      <div class="row">
-        <div class="col-sm-6">
-          After date: {{ after }} <br>
-          <input v-model="after" placeholder="YYYY-MM-DD" class="form-control">
-        </div>
-        <div class="col-sm-6">
-          Before date: {{ before }}<br>
-          <input v-model="before" placeholder="YYYY-MM-DD" class="form-control">
         </div>
 
       </div>
